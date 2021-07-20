@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@+id/navigation_home">
+
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.andres.myrecipes.ui.home.HomeFragment"
+            android:label="@string/title_home">
+        <action
+                android:id="@+id/HomeToDetail"
+                app:destination="@id/detailRecipeFragment"
+                app:enterAnim="@anim/animation_left"
+                app:exitAnim="@anim/animation_right"
+                app:popEnterAnim="@anim/animation_left"
+                app:popExitAnim="@anim/animation_right" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/fragment_Category"
+            android:name="com.andres.myrecipes.ui.categories.CategoryFragment"
+            android:label="Categories"
+            tools:layout="@layout/fragment_category">
+        <action
+                android:id="@+id/CategoryToDetail"
+                app:destination="@id/detailRecipeFragment" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_notifications"
+            android:name="com.andres.myrecipes.ui.favorities.FavoriteFragment"
+            android:label="@string/title_notifications"
+            tools:layout="@layout/fragment_favorite"/>
+    <fragment
+            android:id="@+id/detailRecipeFragment"
+            android:name="com.andres.myrecipes.DetailRecipeFragment"
+            android:label="DetailRecipe"
+            tools:layout="@layout/fragment_detail_recipe">
+        <action
+                android:id="@+id/action_detailRecipeFragment_to_navigation_home"
+                app:destination="@id/navigation_home"
+                app:enterAnim="@anim/animation_left"
+                app:exitAnim="@anim/animation_right" />
+        <action
+                android:id="@+id/action_detailRecipeFragment_to_fragment_Category"
+                app:destination="@id/fragment_Category" />
+    </fragment>
+</navigation>
