@@ -77,27 +77,31 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <ImageView
-                android:layout_width="336dp"
-                android:layout_height="223dp"
+                android:layout_width="271dp"
+                android:layout_height="148dp"
                 android:id="@+id/ImgNotFound"
                 android:layout_gravity="center"
-                android:layout_marginTop="-300dp"
-                tools:srcCompat="@drawable/notfoundc"
-                app:srcCompat="@drawable/notfoundc"
+                android:layout_marginTop="-185dp"
+                tools:srcCompat="@drawable/ic_no_found"
+                app:srcCompat="@drawable/ic_no_found"
                 android:adjustViewBounds="false"
-                tools:visibility="invisible" />
+                tools:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:id="@+id/textNotFound"
                 android:gravity="center"
-                tools:text="no food found"
+                tools:text="no recipes found"
                 android:textColor="@color/primary_dark"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginTop="12dp"
-                android:hint="no food found" />
+                android:hint="no food found"
+                android:visibility="invisible"
+                android:text="no recipes found" />
 
 
     </LinearLayout>
