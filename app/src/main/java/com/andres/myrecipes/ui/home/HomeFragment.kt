@@ -1,14 +1,18 @@
 package com.andres.myrecipes.ui.home
 
+
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.andres.myrecipes.*
+import com.andres.myrecipes.ApiService
+import com.andres.myrecipes.R
+import com.andres.myrecipes.RetrofitEngine
 import com.andres.myrecipes.adapters.RecipesAdapter
 import com.andres.myrecipes.databinding.FragmentHomeBinding
 import com.andres.myrecipes.models.Meal
@@ -30,51 +34,39 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.ImgNotFound.visibility = View.INVISIBLE
         binding.textNotFound.visibility = View.INVISIBLE
-        getRecipes("a")
+        if (savedInstanceState !==null){
+            letter = savedInstanceState.getString("letter").toString()
+
+        }
+        getRecipes()
+
         renderChip(view)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString("letter", letter)
+    }
 
     fun renderChip(view: View) {
-        var listABC = listOf<String>(
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"
-        )
+        var listABC = CharRange('A', 'Z').toList()
         for ((index, value) in listABC.withIndex()) {
             val chip = Chip(view.context)
 
             chip.setOnClickListener {
-                getRecipes(value)
-                binding.TxtTitle.text = "Meals by letter $value "
+                binding.RVhome.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
+                letter = value.toString()
+                getRecipes()
+
+
             }
 
-            chip.text = value
+            chip.text = value.toString()
             chip.width = 50
             chip.height = 50
-            chip.chipStartPadding = 8f
-            chip.chipEndPadding = 8f
+
             chip.chipBackgroundColor =
                 ColorStateList.valueOf(ContextCompat.getColor(view.context, R.color.primary))
             chip.setTextColor(
@@ -131,11 +123,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 
-    private fun getRecipes(value: String ) {
+    private fun getRecipes() {
         val service: ApiService = RetrofitEngine.retrofit()
             .create(ApiService::class.java)
 
-        val result: Call<RecipesList> = service.getRecipes(value.toLowerCase())
+        val result: Call<RecipesList> = service.getRecipes(letter)
         result.enqueue(object : Callback<RecipesList> {
             override fun onFailure(call: Call<RecipesList>, t: Throwable) {
                 Toast.makeText(requireContext(), "error al carga datos", Toast.LENGTH_LONG).show()
@@ -144,10 +136,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onResponse(call: Call<RecipesList>, response: Response<RecipesList>) {
                 val body = response.body()
                 var list: ArrayList<Meal>? = if (body != null) body.meals else null
-
-                if (list?.isNotEmpty() == true){
-                    binding.progressBar.visibility= View.GONE
-                    binding.RVhome.visibility =  View.VISIBLE
+                binding.TxtTitle.text = "Meals by letter $letter "
+                if (list?.isNotEmpty() == true) {
+                    binding.progressBar.visibility = View.GONE
+                    binding.RVhome.visibility = View.VISIBLE
                     var listCarouselImages = mutableListOf<Meal>()
                     var index = 6
                     if (list.size < 6) {
@@ -171,7 +163,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     return
                 }
 
-                binding.RVhome.visibility = View.INVISIBLE
+                binding.RVhome.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
                 binding.ImgNotFound.visibility = View.VISIBLE
                 binding.textNotFound.visibility = View.VISIBLE
             }
@@ -187,14 +180,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         if (!list.isNullOrEmpty()) {
 
-            binding.ImgNotFound.visibility = View.INVISIBLE
-            binding.textNotFound.visibility = View.INVISIBLE
+            binding.ImgNotFound.visibility = View.GONE
+            binding.textNotFound.visibility = View.GONE
             binding.RVhome.layoutManager = GridLayoutManager(requireContext(), 2)
 
             binding.RVhome.adapter = RecipesAdapter(list)
 
         } else if(list.isNullOrEmpty()) {
-            binding.RVhome.visibility = View.INVISIBLE
+            binding.RVhome.visibility = View.GONE
             binding.ImgNotFound.visibility = View.VISIBLE
             binding.textNotFound.visibility = View.VISIBLE
         }

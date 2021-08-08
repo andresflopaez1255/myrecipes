@@ -6,12 +6,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imgRecipe"
             android:layout_width="match_parent"
             android:layout_height="171dp"
             android:layout_marginTop="8dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="30dip"
+            tools:srcCompat="@tools:sample/avatars"
+            android:src="@android:mipmap/sym_def_app_icon" />
 
     <TextView
             android:id="@+id/txt_tittle"
@@ -26,12 +29,5 @@
             android:gravity="center"
             android:layout_gravity="center" />
 
-    <TextView
-            android:id="@+id/txt_category"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Categorias"
-            android:gravity="start"
-            android:layout_gravity="center" />
+
 </LinearLayout>

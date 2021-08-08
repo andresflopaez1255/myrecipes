@@ -1,4 +1,4 @@
-package com.andres.myrecipes.adapters
+package com.andres.myrecipes. adapters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,8 +46,8 @@ class RecipesAdapter(val recipes: ArrayList<Meal>): RecyclerView.Adapter<Recipes
 
 
         fun  render(recipe: Meal){
-            txtTitle.text= recipe.strMeal
-            txtCategory.text= "Category: ${recipe.strCategory}"
+            txtTitle.text= if(recipe.strMeal?.length!! > 15) "${recipe.strMeal?.substring(0,15)}.." else recipe.strMeal;
+                txtCategory.text= "Category: ${recipe.strCategory}"
             Picasso.get().load(recipe.strMealThumb).into(img)
 
 

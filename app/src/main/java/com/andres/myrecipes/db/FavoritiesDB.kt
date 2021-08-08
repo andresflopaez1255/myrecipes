@@ -22,7 +22,7 @@ import com.andres.myrecipes.models.FavoriteMeal
                 INSTANCE = Room.databaseBuilder(
                     context,
                     FavoritiesDB::class.java,
-                    "favorities.db").fallbackToDestructiveMigration()
+                    "favorities.db").fallbackToDestructiveMigration().allowMainThreadQueries()
                     .build()
             }
 

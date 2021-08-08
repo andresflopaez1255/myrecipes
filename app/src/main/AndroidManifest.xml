@@ -13,17 +13,20 @@
             android:roundIcon="@mipmap/icon_laucher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Myrecipes">
-        <activity android:name=".MainActivity22"></activity>
         <activity
-                android:name=".activities.MainActivity"
-                android:theme="@style/Theme.Myrecipes">
+                android:name=".SplashScreen"
+                android:theme="@style/SplashTheme"
+                android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+                android:name=".activities.MainActivity"
+                android:theme="@style/Theme.Myrecipes" />
     </application>
 
 </manifest>

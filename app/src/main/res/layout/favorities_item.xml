@@ -4,7 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -15,11 +16,19 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/abc_vector_test"
                 tools:srcCompat="@tools:sample/avatars"
-                android:id="@+id/imgFavorite" />
+                android:scaleType="fitCenter"
+                app:riv_corner_radius="30dip"
+
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="repeat"
+
+                android:id="@+id/imgFavorite"
+                tools:src="@tools:sample/avatars" />
 
         <LinearLayout
                 android:orientation="vertical"
@@ -41,7 +50,34 @@
                     android:layout_width="233dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/TextCategory"
-                    android:hint="Category" />
+                    android:hint="Category"
+                    android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:id="@+id/delete">
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_baseline_delete_24"
+                        android:id="@+id/imageButton"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="9dp" />
+
+                <TextView
+                        android:text="Delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:paddingStart="5dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

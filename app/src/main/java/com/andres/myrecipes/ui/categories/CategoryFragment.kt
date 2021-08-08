@@ -20,14 +20,23 @@ import retrofit2.Response
 class CategoryFragment : Fragment(R.layout.fragment_category) {
     lateinit var binding: FragmentCategoryBinding
     var listCategory = arrayListOf<CategoryChip>()
-
+        var category = "Beef"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCategoryBinding.bind(view)
         getCategories(view)
-
         getMealsCategory()
+        if (savedInstanceState !== null){
+            category = savedInstanceState.getString("category").toString()
+        }
+    }
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString("category", category)
     }
 
     private fun getCategories(view: View) {
@@ -52,11 +61,11 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
     }
 
 
-    private fun getMealsCategory(categoryName:String="Beef") {
-        Log.d("nameCat", categoryName)
+    private fun getMealsCategory() {
+
         val service: ApiService = RetrofitEngine.retrofit()
             .create(ApiService::class.java)
-        val result: Call<CategoryList> = service.getMealsByCategory(categoryName)
+        val result: Call<CategoryList> = service.getMealsByCategory(category)
         result.enqueue(object : Callback<CategoryList> {
             override fun onFailure(call: Call<CategoryList>, t: Throwable) {
                 Toast.makeText(requireContext(), "error al carga datos", Toast.LENGTH_LONG).show()
@@ -68,7 +77,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
                 binding.progressCategory.visibility = View.GONE
                 binding.recycleViewResult.visibility = View.VISIBLE
                 binding.chipScroll.visibility = View.VISIBLE
-                initRecycler(list,categoryName)
+                initRecycler(list,category)
 
 
             }
@@ -97,11 +106,12 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
             val chip = Chip(view.context)
 
             chip.setOnClickListener {
-             getMealsCategory(value.strCategory)
+                category = value.strCategory
+             getMealsCategory()
             }
 
             chip.text = value.strCategory
-            chip.width = 70
+
             chip.height = 60
             chip.chipStartPadding = 8f
             chip.chipEndPadding = 8f

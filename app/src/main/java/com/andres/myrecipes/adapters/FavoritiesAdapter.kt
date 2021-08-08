@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.andres.myrecipes.R
+import com.andres.myrecipes.db.FavoritiesDB
 import com.andres.myrecipes.models.FavoriteMeal
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
-class FavoritiesAdapter (private val list:List<FavoriteMeal>): RecyclerView.Adapter<FavoritiesAdapter.Holder>() {
+class FavoritiesAdapter (private val list:MutableList<FavoriteMeal>): RecyclerView.Adapter<FavoritiesAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -21,13 +26,23 @@ class FavoritiesAdapter (private val list:List<FavoriteMeal>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        val deleteButton = holder.itemView.findViewById<LinearLayout>(R.id.delete)
+        val  DB = FavoritiesDB.getInstance(holder.itemView.context)
         holder.itemView.setOnClickListener { view->
             val bundle= Bundle()
             bundle.putString("recipeID",list[position].idMeal)
 
-            //view.findNavController().navigate(R.id.CategoryToDetail,bundle)
+            view.findNavController().navigate(R.id.favoriteToDetall,bundle)
 
 
+        }
+
+
+        deleteButton.setOnClickListener {
+
+            DB.favoriteDao().deleteFavorite(list[position])
+            list.removeAt(position)
+            notifyItemRemoved(position)
         }
         Log.d("favorities", "adapter ${list.toString()}")
         holder.render(list[position])
@@ -43,7 +58,7 @@ class FavoritiesAdapter (private val list:List<FavoriteMeal>): RecyclerView.Adap
         val categoryText = view.findViewById<TextView>(R.id.TextCategory)
         fun render(favorite: FavoriteMeal){
 
-            categoryText.text= favorite.strCategory
+            categoryText.text= "Category: ${favorite.strCategory}"
             title.text= favorite.strMeal
             Picasso.get().load(favorite.strMealThumb).resize(400, 400).into(image)
         }

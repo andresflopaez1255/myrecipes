@@ -33,17 +33,19 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
           list = DB.favoriteDao().getAll()
             this.runCatching {
 
-                initRecycler(list)
+                initRecycler(list as MutableList<FavoriteMeal>)
             }
 
         }
+
+
 
 
     }
 
 
 
-    fun initRecycler(list: List<FavoriteMeal>) {
+    fun initRecycler(list: MutableList<FavoriteMeal>) {
 
 
         binding.listFavorite.adapter = FavoritiesAdapter(list)

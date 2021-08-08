@@ -42,9 +42,9 @@ class MealsCategoryAdapter (private val listmeals:ArrayList<CategoryItem>): Recy
         val title = view.findViewById<TextView>(R.id.txt_tittle)
         val categoryText = view.findViewById<TextView>(R.id.txt_category)
         fun render( category:CategoryItem){
-            println(category.strMealThumb)
-            categoryText.text= category.strCategory
-            title.text= category.strMeal
+
+
+            title.text= if(category.strMeal?.length!! > 20) "${category.strMeal?.substring(0,20)}.." else category.strMeal;
             Picasso.get().load(category.strMealThumb).into(image)
         }
     }

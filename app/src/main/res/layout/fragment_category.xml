@@ -8,7 +8,7 @@
         android:orientation="vertical">
 
     <HorizontalScrollView
-            android:layout_width="407dp"
+            android:layout_width="match_parent"
             android:scrollbars="none"
             android:layout_height="52dp"
             android:id="@+id/chipScroll"
@@ -33,7 +33,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="555dp"
+            android:layout_height="668dp"
             android:orientation="vertical"
             android:id="@+id/recycleViewResult"
             android:visibility="gone">
