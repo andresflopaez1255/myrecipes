@@ -45,7 +45,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         val result: Call<Category> = service.getCategories()
         result.enqueue(object : Callback<Category> {
             override fun onFailure(call: Call<Category>, t: Throwable) {
-                Toast.makeText(requireContext(), "error al carga datos", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "error al carga datos ${t}", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<Category>, response: Response<Category>) {
@@ -90,7 +90,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     fun addCategoryNameTolist(list: ArrayList<CategoryResponse>,name:String): ArrayList<CategoryItem> {
         Log.d("namelist", list.toString())
-        var listmeals = arrayListOf<CategoryItem>()
+        val listmeals = arrayListOf<CategoryItem>()
         list.map { item ->
 
             listmeals.add(CategoryItem(item.strMeal,item.strMealThumb,name, item.idMeal))
@@ -101,7 +101,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
     }
     private fun renderChip(view: View) {
 
-        for ((index, value) in listCategory.withIndex()) {
+        for (value in listCategory) {
             Log.d("nombre", value.strCategory)
             val chip = Chip(view.context)
 
@@ -133,7 +133,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     fun initRecycler(list: ArrayList<CategoryResponse>,name:String) {
         Log.d("Init", list.toString())
-        var list=  addCategoryNameTolist(list,name)
+        val list=  addCategoryNameTolist(list,name)
         binding.recycleViewResult.adapter = MealsCategoryAdapter(list)
         binding.recycleViewResult.layoutManager = GridLayoutManager(requireContext(), 2)
 

@@ -8,17 +8,17 @@
             android:title="@string/title_home"/>
 
     <item
-            android:id="@+id/fragment_Category"
+            android:id="@+id/navigationCategories"
             android:icon="@drawable/ic_baseline_category_24"
             android:title="@string/title_dashboard"/>
 
     <item
-            android:id="@+id/favorities"
+            android:id="@+id/navigation_favorities"
             android:icon="@drawable/ic_baseline_favorite_24"
             android:title="@string/title_notifications"/>
     <item
-            android:id="@+id/about"
+            android:id="@+id/navigationAbout"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="About" />
+            android:title="@string/about" />
 
 </menu>

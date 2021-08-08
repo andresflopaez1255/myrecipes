@@ -11,7 +11,7 @@
             android:label="@string/title_home">
         <action
                 android:id="@+id/HomeToDetail"
-                app:destination="@id/detailRecipeFragment"
+                app:destination="@id/navigation_detail"
                 app:enterAnim="@anim/animation_left"
                 app:exitAnim="@anim/animation_right"
                 app:popEnterAnim="@anim/animation_left"
@@ -19,26 +19,26 @@
     </fragment>
 
     <fragment
-            android:id="@+id/fragment_Category"
+            android:id="@+id/navigationCategories"
             android:name="com.andres.myrecipes.ui.categories.CategoryFragment"
             android:label="Categories"
             tools:layout="@layout/fragment_category">
         <action
                 android:id="@+id/CategoryToDetail"
-                app:destination="@id/detailRecipeFragment" />
+                app:destination="@id/navigation_detail" />
     </fragment>
 
     <fragment
-            android:id="@+id/favorities"
+            android:id="@+id/navigation_favorities"
             android:name="com.andres.myrecipes.ui.favorities.FavoriteFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_favorite">
         <action
                 android:id="@+id/favoriteToDetall"
-                app:destination="@id/detailRecipeFragment" />
+                app:destination="@id/navigation_detail" />
     </fragment>
     <fragment
-            android:id="@+id/detailRecipeFragment"
+            android:id="@+id/navigation_detail"
             android:name="com.andres.myrecipes.DetailRecipeFragment"
             android:label="DetailRecipe"
             tools:layout="@layout/fragment_detail_recipe">
@@ -49,13 +49,13 @@
                 app:exitAnim="@anim/animation_right" />
         <action
                 android:id="@+id/action_detailRecipeFragment_to_fragment_Category"
-                app:destination="@id/fragment_Category" />
+                app:destination="@id/navigationCategories" />
     </fragment>
     <fragment
-            android:id="@+id/aboutFragment"
+            android:id="@+id/navigationAbout"
             android:name="com.andres.myrecipes.ui.about.AboutFragment"
-            android:label="fragment_about"
-            tools:layout="@layout/fragment_about" >
+            android:label="About"
+            tools:layout="@layout/fragment_about">
         <action
                 android:id="@+id/action_aboutFragment_to_navigation_home"
                 app:destination="@id/navigation_home" />

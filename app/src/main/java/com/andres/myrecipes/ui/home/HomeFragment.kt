@@ -130,7 +130,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val result: Call<RecipesList> = service.getRecipes(letter)
         result.enqueue(object : Callback<RecipesList> {
             override fun onFailure(call: Call<RecipesList>, t: Throwable) {
-                Toast.makeText(requireContext(), "error al carga datos", Toast.LENGTH_LONG).show()
+                Log.e("retro", t.toString())
+                Toast.makeText(requireContext(), "error al carga datos ${t}", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<RecipesList>, response: Response<RecipesList>) {
