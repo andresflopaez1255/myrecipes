@@ -15,4 +15,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="about">About</string>
+    <string name="key_api_youtube">AIzaSyCm-SWwRIO6Mm7UnK8-wJ2Mi1UuAEo51GI</string>
+    <string name="explanatory_video">Explanatory video</string>
 </resources>
