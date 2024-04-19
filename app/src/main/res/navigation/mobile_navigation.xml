@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/navigation_home"
-            android:name="com.andres.myrecipes.ui.home.HomeFragment"
+            android:name="com.hefestsoft.myrecipes.ui.home.HomeFragment"
             android:label="@string/title_home">
         <action
                 android:id="@+id/HomeToDetail"
@@ -20,7 +20,7 @@
 
     <fragment
             android:id="@+id/navigationCategories"
-            android:name="com.andres.myrecipes.ui.categories.CategoryFragment"
+            android:name="com.hefestsoft.myrecipes.ui.categories.CategoryFragment"
             android:label="Categories"
             tools:layout="@layout/fragment_category">
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
             android:id="@+id/navigationAbout"
-            android:name="com.andres.myrecipes.ui.about.AboutFragment"
+            android:name="com.hefestsoft.myrecipes.ui.about.AboutFragment"
             android:label="About"
             tools:layout="@layout/fragment_about">
         <action

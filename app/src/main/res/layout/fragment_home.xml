@@ -18,21 +18,6 @@
                 android:orientation="vertical">
 
 
-            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-                    android:id="@+id/carousel"
-                    android:layout_width="match_parent"
-                    android:layout_height="254dp"
-                    android:layout_gravity="top"
-                    app:showBottomShadow="false"
-                    app:showIndicator="true"
-                    app:autoPlay="true"
-                    app:autoPlayDelay="10000"
-                    app:showNavigationButtons="false"
-                    android:backgroundTint="@color/accent"
-                    android:backgroundTintMode="screen"
-                    app:carouselType="SHOWCASE"
-
-                    android:layout_marginBottom="8dp" />
 
             <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -102,7 +87,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
             </androidx.recyclerview.widget.RecyclerView>
 

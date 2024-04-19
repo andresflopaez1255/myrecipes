@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:id="@+id/layourt"
+        tools:layout_editor_absoluteY="81dp">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imgRecipe"
-            android:layout_width="match_parent"
-            android:layout_height="171dp"
-            android:layout_marginTop="8dp"
-            android:scaleType="fitCenter"
-            app:riv_corner_radius="30dip"
-            tools:srcCompat="@tools:sample/avatars"
-            android:src="@android:mipmap/sym_def_app_icon" />
+    <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="173dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/card_category"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-            android:id="@+id/txt_tittle"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="TITULO"
-            android:text="TITULO"
-            android:textColor="#951509"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="clip_horizontal|center|center_vertical"
+                android:gravity="center">
 
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_text" />
+        </LinearLayout>
 
-</LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

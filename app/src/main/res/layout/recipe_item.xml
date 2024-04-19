@@ -1,46 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/linealLayort"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:orientation="vertical"
-        android:paddingStart="5dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginStart="3dp">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imgRecipe"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+     >
+
+<androidx.cardview.widget.CardView
+        android:layout_width="379dp"
+        android:layout_height="203dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082">
+
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="171dp"
-            android:layout_marginTop="8dp"
-            android:scaleType="fitCenter"
-            app:riv_corner_radius="30dip"
-            tools:srcCompat="@tools:sample/avatars"
-            style="@style/TextAppearance.AppCompat.Small"
-            android:src="@android:mipmap/sym_def_app_icon" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/txt_tittle"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="TITULO"
-            android:textColor="#951509"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center" />
+        <ImageView
+                android:id="@+id/imgRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="149dp"
+                android:scaleType="centerCrop"
+                 />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-    <TextView
-            android:id="@+id/txt_category"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Categorias"
-            android:gravity="start"
-            android:layout_gravity="center" />
+            <TextView
+                    android:id="@+id/txt_tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="top"
 
-</LinearLayout>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.514" />
+
+            <Button
+                    android:id="@+id/button"
+                    android:layout_width="72dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/button_style"
+                    style="@style/CardView.Dark"
+                    app:backgroundTint="@color/orange"
+                    android:textColor="@color/black"
+                    android:text="Ver"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.844"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txt_tittle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

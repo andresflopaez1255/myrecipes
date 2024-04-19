@@ -10,5 +10,6 @@
     <color name="divider">#BDBDBD</color>
     <color name="black">#212121</color>
     <color name="chip_selected">#A31646</color>
+    <color name="orange">#FFA500</color>
 
 </resources>

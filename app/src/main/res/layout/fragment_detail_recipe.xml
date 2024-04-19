@@ -248,21 +248,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                     app:layout_constraintVertical_bias="0.049" />
 
-            <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp">
-
-                <com.google.android.exoplayer2.ui.PlayerView
-                        android:id="@+id/video_player"
-                        android:layout_width="match_parent"
-                        app:resize_mode="fill"
-                        app:show_buffering="when_playing"
-                        app:controller_layout_id="@layout/exo_player_control_view"
-                        android:layout_height="match_parent" >
-
-
-                </com.google.android.exoplayer2.ui.PlayerView>
-            </FrameLayout>
 
         </LinearLayout>
     </ScrollView>
